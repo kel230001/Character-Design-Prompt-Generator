@@ -11,6 +11,9 @@ def character_gender():
     :return: gender
     :rtype: str
     """
+    gender = ["male","female"]
+    idx = random.randrange(2)
+    return gender[idx]
     print("Would you like to randomize or input gender?")
 
 def character_trait():
