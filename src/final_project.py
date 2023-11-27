@@ -5,8 +5,17 @@ import random
 
 
 def character_type(artist):
-
+    #add docstring
     print("Would you like to randomize or input type of character?")
+    if (artist == "yes")
+    #add case sensitive
+        type = ["human","animal"]
+            elif (artist == "animal")
+            #add case sensitive
+            type = [#animal file like artist prompt lab 6..?]
+    if (artist == "no")
+
+
 
 def character_gender(artist):
     """
