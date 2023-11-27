@@ -17,3 +17,7 @@ def character_trait():
 
 def character_trademark()
     
+
+
+if __name__ == "__main__":
+    main()
