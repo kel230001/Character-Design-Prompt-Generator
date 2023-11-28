@@ -1,23 +1,54 @@
-import random 
-import csv
-#can I import more than one of these...?
+import random
+
+
+
+def get_prompts_from_file(filename):
+    """
+    :param filename
+    :type filename: str
+    :returns: a list of prompts
+    :rtype: list
+    """
+    f = open(filename, 'r')
+    prompt_list = f.read().split('\n')
+    f.close()
+    return prompt_list
+
+def pick_random_prompt(prompts):
+    """
+    :param prompts
+    :type filename: list
+    :returns: the string prompt that was randomly chosen
+    :rtype: str
+    """
+    prompt = random.choice(prompts)
+    return prompt
+
+
 
 
 
 def character_type(artist):
     #add docstring
     print("Would you like to randomize or input type of character?")
-    if (artist == "yes")
+    if (artist == "yes"):
+        #add case sensitive
+        return character_type
+    character_type = ["human","animal"]
+    elif (artist == "animal"):
+    #elif (artist == "animal"):      ---but unexpected indent?
+    ###add case sensitive
+    def main():
+        animals = get_prompts_from_file("animal.txt")
+        animal = pick_random_prompt(animals)
+        return animal
+    if (artist == "input"):
     #add case sensitive
-        character_type = ["human","animal"]
-            elif (artist == "animal")
-            #add case sensitive
-            character_type = [#animal file like artist prompt lab 6..?]
-    if (artist == "input")
-    #add case sensitive
-        character_type = print("Input your type")
-        #define character_type?
+        return(print("Input your type"))
 
+
+
+        
 
 
 def character_gender(artist):
@@ -26,53 +57,41 @@ def character_gender(artist):
     :rtype: str
     """
     print("Would you like to randomize or input gender?")
-    if (artist == "yes")
-        gender = ["male","female"]
-        idx = random.randrange(2)
+    gender = ["male","female"]
+    idx = random.randrange(2)
+    if (artist == "yes"):
         return gender[idx]
-    if (artist == "input")
+    if (artist == "input"):
     #add case sensitive
-        character_gender = print("Input your type")
-        #define character_gender?
+        return(print("Input your type"))
+
+def main():
+    gender = character_gender()
+print(character_gender)
 
 
 
 
-def add_item(filename, new_emotion, new_theme):
-    """
-    :param filename:
-    :type filename: str
-    :param new_emotion:
-    :type new_emotion: str
-    :param new_theme:
-    :type new_theme: int
-    """
-    with open(filename, 'a', newline='') as file:
-        csv_writer = csv.DictWriter(file, fieldnames=['emotion', 'theme'])
-        csv_writer.writerow({'emotion': new_emotion, 'theme': new_theme})
 
 
-def character_trait(traitsfile):
-    """
-    :param traitsfile:
-    :type traitsfile: str
-    """
-    with open (traitsfile, newline='') as csvfile:
-        reader = csv.DictReader(csvfile, #IDK=['first thing', 'second thing'])
-    #defaults 2 traits
-    print("How many personality traits would you like your character to have? (1-4)")
-    if (artist == 1)
-        
-    if (artist == 2)
-    if (artist == 3)
-    if (artist == 4)
+def main():
+    themes = get_prompts_from_file("theme.txt")
+    theme = pick_random_prompt(nouns)
+    
+    emotions = get_prompts_from_file("emotion.txt")
+    emotion = pick_random_prompt(emotions)
+
+    print(f"{emotion} {theme}")
     
 
-    print("How many personality traits will your character have? Type answer.")
 
-def character_trademark(artist)
+
+
+
+
+
     
-print(character_type,)
+print(character_type, )
 
 if __name__ == "__main__":
     main()

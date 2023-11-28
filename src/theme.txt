@@ -1,8 +1,8 @@
-Goth
+﻿Goth 
 Business Man
 Partier
 Baby
-Teenage angst
+Teenage Angst
 Preppy
 Student
 Athlete
@@ -12,6 +12,8 @@ BodyBuilder
 Coffee Shop Worker
 Teacher
 Plumber
+Waitress/Waiter
+Cook/Chef
 Superhero
 Doctor
 Soldier
