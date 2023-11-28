@@ -1,5 +1,15 @@
 import random
 
+print("Welcome to character generator! Would you like to start your character?")
+
+
+def start(artist):
+    if (artist == "yes"):
+        #add docstring
+        ##add case sensitive
+        return print("Great! Let's get Started!")
+    
+
 
 
 def get_prompts_from_file(filename):
@@ -29,15 +39,15 @@ def pick_random_prompt(prompts):
 
 
 def character_type(artist):
-    #add docstring
+    ##add docstring
     print("Would you like to randomize or input type of character?")
     if (artist == "yes"):
-        #add case sensitive
+        ##add case sensitive
         return character_type
     character_type = ["human","animal"]
     elif (artist == "animal"):
     #elif (artist == "animal"):      ---but unexpected indent?
-    ###add case sensitive
+    ##add case sensitive
     def main():
         animals = get_prompts_from_file("animal.txt")
         animal = pick_random_prompt(animals)
@@ -62,10 +72,11 @@ def character_gender(artist):
     if (artist == "yes"):
         return gender[idx]
     if (artist == "input"):
-    #add case sensitive
+    ##add case sensitive
         return(print("Input your type"))
 
 def main():
+    ##doctstring?
     gender = character_gender()
 print(character_gender)
 
@@ -75,8 +86,9 @@ print(character_gender)
 
 
 def main():
+    ##add docstring
     themes = get_prompts_from_file("theme.txt")
-    theme = pick_random_prompt(nouns)
+    theme = pick_random_prompt(themes)
     
     emotions = get_prompts_from_file("emotion.txt")
     emotion = pick_random_prompt(emotions)
@@ -91,7 +103,7 @@ def main():
 
 
     
-print(character_type, )
+print("Your character is a" character_type, character_gender, " who is a " emotion, theme "!" )
 
 if __name__ == "__main__":
     main()
