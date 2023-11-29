@@ -5,8 +5,15 @@ print("Welcome to character generator! Would you like to start your character?")
 
 def start(artist):
     if (artist == "yes"):
-        #add docstring
-        ##add case sensitive
+        """
+        :param artist
+        :type artist: str
+        :returns: print function
+        :rtype: TYPE IDK
+         """
+        ##two lines below make case sensitive?
+        artist=input(answer_yes)
+        answer_yes = answer_yes.casefold()
         return print("Great! Let's get Started!")
     
 
@@ -38,22 +45,33 @@ def pick_random_prompt(prompts):
 
 
 def character_type(artist):
-    ##add docstring
+    """
+    :param artist
+    :type artist: str
+    :return: type
+    :rtype: str
+    """
     print("Would you like to randomize or input type of character?")
     
     if (artist == "yes"):
-        ##add case sensitive
+        ##two lines below make case sensitive?
+        artist=input(answer_yes)
+        answer_yes = answer_yes.casefold()
         return character_type
     character_type = ["human","animal"]
     elif (artist == "animal"):
         #elif (artist == "animal"):      ---but unexpected indent?
-    ##add case sensitive
+    ##two lines below make case sensitive?...shouldnt they be indented? error when indented
+    artist=input(answer_animal)
+    answer_animal = answer_animal.casefold
     def main():
         animals = get_prompts_from_file("animal.txt")
         animal = pick_random_prompt(animals)
         return animal
     if (artist == "input"):
-    #add case sensitive
+        ##two lines below make case sensitive?
+        artist = input(answer_input)
+        answer_input = answer_input.casefold()
         return(print("Input your type"))
 
 
@@ -61,6 +79,8 @@ def character_type(artist):
         
 def character_gender(artist):
     """
+    :param artist
+    :type artist: str
     :return: gender
     :rtype: str
     """
@@ -68,9 +88,14 @@ def character_gender(artist):
     gender = ["male","female"]
     idx = random.randrange(2)
     if (artist == "yes"):
+        ####two lines below make case sensitive?
+        artist=input(answer_yes)
+        answer_yes = answer_yes.casefold()
         return gender[idx]
     if (artist == "input"):
-    ##add case sensitive
+    ####two lines below make case sensitive?
+        artist = input(answer_input)
+        answer_input = answer_input.casefold()
         return(print("Input your type"))
 
 def main():
