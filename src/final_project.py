@@ -1,186 +1,214 @@
 import random
-#import os
-#import openai
-#import nextcord
-#from nextcord.ext import commands
-from craiyon import Craiyon
-from PIL import Image
-#pip install pillow
-#from io import BytesIO
-#import base64
 import sys
-#import time
-#import keras_cv
-#from tensorflow import keras
-#import matplotlib.pylot as plt
-#from config import TOKEN
+import time
+import requests
+from PIL import Image
+from io import BytesIO
 
 #pip install openai
-#To update, run: python.exe -m pip install --upgrade pip
-#pip install -U craiyon.py
- 
-print("Welcome to character generator! Would you like to start your character?")
- 
-artist = input()
-#def start(artist):
-if (artist == "yes"):
+
+
+def main():
+
+    def secret_code_function():
+        """
+
+        """
+        import base64
+        def encode(key, clear):
+            enc = []
+            for i in range(len(clear)):
+                key_c = key[i % len(key)]
+                enc_c = chr((ord(clear[i]) + ord(key_c)) % 256)
+                enc.append(enc_c)
+            return base64.urlsafe_b64encode("".join(enc).encode()).decode()
+
+        def decode(key, enc):
+            dec = []
+            enc = base64.urlsafe_b64decode(enc).decode()
+            for i in range(len(enc)):
+                key_c = key[i % len(key)]
+                dec_c = chr((256 + ord(enc[i]) - ord(key_c)) % 256)
+                dec.append(dec_c)
+            return "".join(dec)
+
+        secret_openai_jumble = "w6HDkMKZw63CscK1w4PCnMODw5nCs8OlwrbCusOBw6bDgMOaw5rDlcOCw6TCssOCwp_Cq8OZw5DDkMKywr3DicKmw6bDncKdw6HDkcOew4nCusOew4bCscKewq_Dn8K_w6TDmsOS"
+        print("Enter the secret code! (Hint: professor's full name, no spaces, no caps)")
+        secret_code = input().lower()
+        openai_api_key = decode(secret_code, secret_openai_jumble)
+        return openai_api_key
+
+    openai_api_key = secret_code_function()
+
+    print("Welcome to the quick sketch practice game! Answer yes to the following questions to randomize a character description! Once the character description is randomized, you will have 30 seconds to draw this character. After time is up, I'll draw my own sketch. If you are playing with a friend, you can see whoever's looks most like mine, and the sketch that looks more like mine wins! If you are playing alone, you can use this prompt as inspiration, or see how fast you can sketch the prompt, then see if your drawing looks similar to mine.")
+
+    print("Would you like to start your character?")
+    
+    artist = input()
+    #def start(artist):
+    if (artist == "yes"):
+            """
+            :param artist
+            :type artist: str
+            :returns: print function
+            :rtype: TYPE IDK
+            """
+            ##two lines below make case sensitive?
+            #artist=input(answer_yes)
+            #answer_yes = answer_yes.casefold()
+        #return
+            print("Great! Let's get Started!")
+    if (artist == "no"):
+        print ("well you just suck!")
+        sys.exit()
+        
+    
+    print("Would you like to randomize your type of character?")
+    
+    
+    def character_type(artist):
         """
         :param artist
         :type artist: str
-        :returns: print function
-        :rtype: TYPE IDK
-         """
-        ##two lines below make case sensitive?
-        #artist=input(answer_yes)
-        #answer_yes = answer_yes.casefold()
-    #return
-        print("Great! Let's get Started!")
-if (artist == "no"):
-    print ("well you just suck!")
-    sys.exit()
+        :return: type
+        :rtype: str
+        """
+    artist = input()
+    if (artist == "yes"):
+            ##two lines below make case sensitive?
+            #artist=input(answer_yes)
+            #answer_yes = answer_yes.casefold()
+            #return character_type
+        character_type = ["Human", "Animal"]
+        idx = random.randrange(2)
+        print("Your character is a" , character_type[idx])
+    #character_type[idx]=type
+    if (character_type[idx] == "Animal"):
+    #elif(idx == "Animal"):
+        file_path = "animal.txt"
+        #try:
+        with open(file_path, 'r', encoding='utf-8-sig') as file:
+                lines = file.readlines()
+                if lines:
+                    random_line = random.choice(lines)
+                    animal_type = random_line.strip()
+                    print("a(an)", animal_type)
     
- 
-print("Would you like to randomize your type of character?")
- 
- 
-def character_type(artist):
-    """
-    :param artist
-    :type artist: str
-    :return: type
-    :rtype: str
-    """
-artist = input()
-if (artist == "yes"):
-        ##two lines below make case sensitive?
-        #artist=input(answer_yes)
-        #answer_yes = answer_yes.casefold()
-        #return character_type
-    character_type = ["Human", "Animal"]
-    idx = random.randrange(2)
-    print("Your character is a" , character_type[idx])
-#character_type[idx]=type
-if (character_type[idx] == "Animal"):
-#elif(idx == "Animal"):
-    file_path = "animal.txt"
-    #try:
-    with open(file_path, 'r', encoding="utf-8-sig") as file:
+    
+    #print("Would you like to choose the gender?")   
+    print("Would you like to know the gender?")
+    artist = input()
+    if (artist == "yes"):
+        gender = ["Male","Female"]
+        random_gender = random.choice(gender)
+        print("Your character is",random_gender) 
+    #if (artist == "yes"):
+        #print("Type your gender choice")
+        #artist = input()
+        #type_gender = f" {artist}"
+
+        
+    
+    print("Would you like to know the vibe of your character?")
+
+
+    artist = input()
+    file_path = "emotion.txt"
+    with open(file_path, 'r', encoding='utf-8-sig') as file:
             lines = file.readlines()
             if lines:
                 random_line = random.choice(lines)
-                animal_type = random_line.strip()
-                print("a(an)", animal_type)
-   
-   
-#print("Would you like to choose the gender?")   
-print("Would you like to know the gender?")
-artist = input()
-if (artist == "yes"):
-    gender = ["Male","Female"]
-    random_gender = random.choice(gender)
-    print("Your character is",random_gender) 
-#if (artist == "yes"):
-    #print("Type your gender choice")
-    #artist = input()
-    #type_gender = f" {artist}"
+                emotion = random_line.strip()
+                
+
+    file_path = "theme.txt"
+    with open(file_path,'r', encoding='utf-8-sig') as file:
+                lines = file.readlines()
+                if lines:
+                    random_line = random.choice(lines)
+                    theme = random_line.strip()
+
+                print("Your character is a(an)",emotion, theme)
+    
 
     
- 
-print("Would you like to know the vibe of your character?")
+    if (character_type[idx] == "Animal"):
+        print("In sum, your character is a(an)",character_type[idx],animal_type,random_gender,"who is a(an)",emotion,theme,"!")
+    if (character_type[idx]) == "Human":
+        print("In sum, your character is a(an)",character_type[idx],random_gender,"who is a(an)",emotion,theme,"!")
 
 
-artist = input()
-file_path = "emotion.txt"
-with open(file_path, 'r', encoding="utf-8-sig") as file:
-        lines = file.readlines()
-        if lines:
-            random_line = random.choice(lines)
-            emotion = random_line.strip()
+    print("Would you like to see an example of your new generated character?")
+    artist = input()
+    if (artist == "yes"):
+        print("give me a minute to generate your image...")
+
+        
+    #open.api_key = os.getenv("OPENAI_API_KEY")
+    if (character_type[idx] == "Animal"):
+        user_prompt = (character_type[idx],animal_type,random_gender,emotion,theme)
+    if (character_type[idx]) == "Human":
+        user_prompt = (character_type[idx],random_gender,emotion,theme)
+
+
+    
+    user_prompt_string = " ".join(user_prompt) 
+    openai_prompt_string = user_prompt_string + " sketch"
+
+    def draw_sketch():    
+        from openai import OpenAI
+        client = OpenAI(api_key=openai_api_key)
+
+        response = client.images.generate(
+        model="dall-e-2",
+        prompt=openai_prompt_string,
+        size="512x512",
+        quality="standard",
+        n=1,
+        )
+        image_url = response.data[0].url
+
+
+    
+
+        # URL of the image
+        image_url = image_url
+
+        # Send a GET request to the URL to fetch the image
+        response = requests.get(image_url)
+
+
+        # Check if the request was successful (status code 200)
+        if response.status_code == 200:
+            # Read the image content from the response
+            image_data = response.content
             
+            # Create a PIL Image object from the image data
+            image = Image.open(BytesIO(image_data))
+            
+            # Display the image
+            image.show()
+        else:
+            print("Failed to fetch the image. Status code:", response.status_code)
 
-file_path = "theme.txt"
-with open(file_path,'r', encoding="utf-8-sig") as file:
-            lines = file.readlines()
-            if lines:
-                random_line = random.choice(lines)
-                theme = random_line.strip()
+    print("\n"*50)
+    print(f"Draw this! {user_prompt_string}")
 
-            print("Your character is a(an)",emotion, theme)
- 
+    seconds = 30
 
- 
-#'''
-if (character_type[idx] == "Animal"):
-    print("In sum, your character is a(an)",character_type[idx],animal_type,random_gender,"who is a(an)",emotion,theme,"!")
-if (character_type[idx]) == "Human":
-    print("In sum, your character is a(an)",character_type[idx],random_gender,"who is a(an)",emotion,theme,"!")
-
-
-print("Would you like to see an example of your new generated character?")
-artist = input()
-if (artist == "yes"):
-    print("give me a minute to generate your image...")
-
-    
-#open.api_key = os.getenv("OPENAI_API_KEY")
-if (character_type[idx] == "Animal"):
-    user_prompt = (character_type[idx],animal_type,random_gender,emotion,theme)
-if (character_type[idx]) == "Human":
-    user_prompt = (character_type[idx],random_gender,emotion,theme)
-#response = openai.Image.create(
-#user_prompt = prompt
-#    n=1,
-#    size = "1024x1024"
-#)
-
-#model = keras_cv.models.StableDiffusion(img_width=512, img_height=512)
-
-#images = model.txt_to_image(user_prompt, batch_size=3)
-
-#def plot_images(images):
-    #plt.figure(figsize(20,20))
-    #for i in range(len(images)):
-        #ax = plt.subplot(1, len(images), i +1)
-        #plt.imshow(images[i])
-        #plt.axis("off")
-
-#plot_images(images)
-print(user_prompt)
-user_prompt_string = "." .join(user_prompt)
+    while seconds > 0:
+        print(f"Time left: {seconds} seconds", end='\r')  # Use '\r' to overwrite the previous line
+        time.sleep(1)  # Pause for one second
+        seconds -= 1
+    print("PENCILS DOWN! "*1000)
+    print("\nMy turn to draw, one second...")
+   
+    try:
+        draw_sketch()
+    except:
+        print("Oops, You may have put in the wrong password...Or you may need to uppdate to openAi version 1.2")
+    print("Who's drawing was closest to mine?")
 
 
-generator = Craiyon() 
-result = generator.generate(user_prompt)
-print(result.images)
-for url in result.images:
-    print(url)
-print(result.description)
-images = craiyon_utils.encode_base64(result.images)
-for i in images:
-    image = Image.open(BytesIO(base64(result.images)))
-
-
-
-#openai.api_key = os.getenv("OPENAI_API_KEY")
- 
-#user_prompt = input("write your prompt for DLL-E 2: ")
- 
-#response = openai.Image.create(
-#    prompt=user_prompt,
-#    n=1,
-#    #n is the number of images...if code isnt long enough, add a prompt to let the user pick n
-#   size = "1024x1024"
-#   #make sure resolution is adequete according to digital rain
-#)
- 
-#image_url = response['data'][0]['url']
-#print(image_url)
-#minute 4.57 in video
- 
-#open in code     openai.api_key = <API-KEY>
-#  OPENAI_API_KEY=<API-KEY>)
- 
- 
-#if __name__ == "__main__":
-#    main()
- 
+if __name__ == "__main__":
+   main()
