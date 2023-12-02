@@ -64,7 +64,7 @@ if (character_type[idx] == "Animal"):
 #elif(idx == "Animal"):
     file_path = "animal.txt"
     #try:
-    with open(file_path, 'r') as file:
+    with open(file_path, 'r', encoding="utf-8-sig") as file:
             lines = file.readlines()
             if lines:
                 random_line = random.choice(lines)
@@ -91,7 +91,7 @@ print("Would you like to know the vibe of your character?")
 
 artist = input()
 file_path = "emotion.txt"
-with open(file_path, 'r') as file:
+with open(file_path, 'r', encoding="utf-8-sig") as file:
         lines = file.readlines()
         if lines:
             random_line = random.choice(lines)
@@ -99,7 +99,7 @@ with open(file_path, 'r') as file:
             
 
 file_path = "theme.txt"
-with open(file_path,'r') as file:
+with open(file_path,'r', encoding="utf-8-sig") as file:
             lines = file.readlines()
             if lines:
                 random_line = random.choice(lines)
@@ -145,17 +145,19 @@ if (character_type[idx]) == "Human":
         #plt.axis("off")
 
 #plot_images(images)
+print(user_prompt)
+user_prompt_string = "." .join(user_prompt)
 
 
-#generator = Craiyon() 
-#result = generator.generate(user_prompt)
-#print(result.images)
-#for url in result.images:
-#    print(url)
-#print(result.description)
-#images = craiyon_utils.encode_base64(result.images)
-#for i in images:
-#    image = Image.open(BytesIO(base64(result.images)))
+generator = Craiyon() 
+result = generator.generate(user_prompt)
+print(result.images)
+for url in result.images:
+    print(url)
+print(result.description)
+images = craiyon_utils.encode_base64(result.images)
+for i in images:
+    image = Image.open(BytesIO(base64(result.images)))
 
 
 
