@@ -4,6 +4,7 @@ import time
 import requests
 from PIL import Image
 from io import BytesIO
+import base64
 
 #pip install openai
 
@@ -12,10 +13,18 @@ def main():
 
     def secret_code_function():
         """
-
+        :param name: secret_code_function
+        :type secret_code_function: str
+        :returns: the encoded answer
+        :rtype: str
         """
-        import base64
         def encode(key, clear):
+            """
+            :param name: key
+            :type key: str
+            :returns: result after being encoded
+            :rtype: str
+            """
             enc = []
             for i in range(len(clear)):
                 key_c = key[i % len(key)]
@@ -24,6 +33,12 @@ def main():
             return base64.urlsafe_b64encode("".join(enc).encode()).decode()
 
         def decode(key, enc):
+            """
+            :param name: key
+            :type key: str
+            :returns: result after being encoded
+            :rtype: str
+            """
             dec = []
             enc = base64.urlsafe_b64decode(enc).decode()
             for i in range(len(enc)):
@@ -40,7 +55,7 @@ def main():
 
     openai_api_key = secret_code_function()
 
-    print("Welcome to the quick sketch practice game! Answer yes to the following questions to randomize a character description! Once the character description is randomized, you will have 30 seconds to draw this character. After time is up, I'll draw my own sketch. If you are playing with a friend, you can see whoever's looks most like mine, and the sketch that looks more like mine wins! If you are playing alone, you can use this prompt as inspiration, or see how fast you can sketch the prompt, then see if your drawing looks similar to mine.")
+    print("Welcome to the quick sketch practice game! Answer yes to the following questions to randomize a character description! Once the character description is randomized, you will have 30 seconds to draw this character. After time is up, I'll draw my own sketch and you can see if yours looks like mine!. If you are playing with a friend, the sketch that looks more like mine wins! If you are playing alone, you can use this prompt as inspiration, or see how fast you can sketch the prompt, then see if your drawing looks similar to mine.")
 
     print("Would you like to start your character?")
     
@@ -51,7 +66,7 @@ def main():
             :param artist
             :type artist: str
             :returns: print function
-            :rtype: TYPE IDK
+            :rtype: str
             """
             ##two lines below make case sensitive?
             #artist=input(answer_yes)
@@ -131,17 +146,7 @@ def main():
                 print("Your character is a(an)",emotion, theme)
     
 
-    
-    if (character_type[idx] == "Animal"):
-        print("In sum, your character is a(an)",character_type[idx],animal_type,random_gender,"who is a(an)",emotion,theme,"!")
-    if (character_type[idx]) == "Human":
-        print("In sum, your character is a(an)",character_type[idx],random_gender,"who is a(an)",emotion,theme,"!")
 
-
-    print("Would you like to see an example of your new generated character?")
-    artist = input()
-    if (artist == "yes"):
-        print("give me a minute to generate your image...")
 
         
     #open.api_key = os.getenv("OPENAI_API_KEY")
@@ -153,9 +158,15 @@ def main():
 
     
     user_prompt_string = " ".join(user_prompt) 
-    openai_prompt_string = user_prompt_string + " sketch"
+    openai_prompt_string = user_prompt_string + " pen sketch"
 
-    def draw_sketch():    
+    def draw_sketch():   
+        """
+        :param name:openai_api_key
+        :type openai_api_key:str
+        :returns: URL for ai generated image
+        :rtype: str
+        """ 
         from openai import OpenAI
         client = OpenAI(api_key=openai_api_key)
 
@@ -191,8 +202,14 @@ def main():
         else:
             print("Failed to fetch the image. Status code:", response.status_code)
 
+
     print("\n"*50)
-    print(f"Draw this! {user_prompt_string}")
+    #print(f"Draw this! {user_prompt_string}")
+    if (character_type[idx] == "Animal"):
+        print("In sum, your character is a(an)",character_type[idx],animal_type,random_gender,"who is a(an)",emotion,theme,"!")
+    if (character_type[idx]) == "Human":
+        print("In sum, your character is a(an)",character_type[idx],random_gender,"who is a(an)",emotion,theme,"!")
+    print(f"Race to draw the newly generated prompt! You have 30 seconds!")
 
     seconds = 30
 
@@ -207,7 +224,7 @@ def main():
         draw_sketch()
     except:
         print("Oops, You may have put in the wrong password...Or you may need to uppdate to openAi version 1.2")
-    print("Who's drawing was closest to mine?")
+    print("Was your drawing close to mine?")
 
 
 if __name__ == "__main__":
