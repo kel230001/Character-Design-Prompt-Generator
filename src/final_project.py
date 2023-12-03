@@ -55,7 +55,7 @@ def main():
 
     openai_api_key = secret_code_function()
 
-    print("Welcome to the quick sketch practice game! Answer yes to the following questions to randomize a character description! Once the character description is randomized, you will have 30 seconds to draw this character. After time is up, I'll draw my own sketch and you can see if yours looks like mine!. If you are playing with a friend, the sketch that looks more like mine wins! If you are playing alone, you can use this prompt as inspiration, or see how fast you can sketch the prompt, then see if your drawing looks similar to mine.")
+    print("Welcome to the quick sketch practice game! Answer yes to the following questions to randomize a character description! Once the character description is randomized, you will have 30 seconds to draw this character on a piece of paper or sketchbook. After time is up, I'll draw my own sketch and you can see if yours looks like mine!. If you are playing with a friend, the sketch that looks more like mine wins! If you are playing alone, you can use this prompt as inspiration, or see how fast you can sketch the prompt, then see if your drawing looks similar to mine.")
 
     print("Would you like to start your character?")
     
